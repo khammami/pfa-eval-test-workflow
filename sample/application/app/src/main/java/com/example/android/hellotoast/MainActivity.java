@@ -16,7 +16,10 @@
 
 package com.example.android.hellotoast;
 
+import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -32,6 +35,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String COUNT_KEY = "com.example.android.hellotoast.counter_key";
     private int mCount = 0;
     private TextView mShowCount;
 
@@ -50,9 +54,14 @@ public class MainActivity extends AppCompatActivity {
     *             the passed in view is not used.
     */
     public void showToast(View view) {
-        Toast toast = Toast.makeText(this, R.string.toast_message,
-                Toast.LENGTH_SHORT);
-        toast.show();
+        //creating and initializing an Intent object
+        Intent intent = new Intent(getApplicationContext(), NewActivity.class);
+
+        //attach the key value pair using putExtra to this intent
+        intent.putExtra(COUNT_KEY,mCount);
+
+        //starting the activity
+        startActivity(intent);
     }
 
     /*
