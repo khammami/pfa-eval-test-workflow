@@ -43,8 +43,6 @@ This project automates the build, test, and evaluation processes for Android pro
 
 
 
-### Contact
-My Email : achrafbenabdalah44@gmail.com <br>
-Project Link: https://github.com/Enet-Com-23/pfa-eval-android-project.git
+
 
    
