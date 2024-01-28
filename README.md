@@ -37,9 +37,10 @@ This project automates the build, test, and evaluation processes for Android pro
 ### Installation
 
 1. Clone the repository:
-
    ```bash
    git clone https://github.com/Enet-Com-23/pfa-eval-android-project.git
+
+   
 
 
 
