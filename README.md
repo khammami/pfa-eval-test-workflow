@@ -69,6 +69,10 @@ To automate the assessment of Android projects submitted by students, saving ins
 
 Clone the repository using the provided command.
 
+```bash
+   git clone https://github.com/Enet-Com-23/pfa-eval-android-project.git
+```
+
 ## Additional Insights
 
 - Customizable Evaluation: The project likely allows instructors to tailor evaluation criteria and feedback mechanisms.
