@@ -1,4 +1,4 @@
-# [PFA] Assessment of Student Android Projects
+# [PFA] Automatic Android Programming Assignment Grading in Github Classroom
 
 ## Project Aim
 
@@ -88,6 +88,6 @@ Clone the repository using the provided command.
 
 Please cite this work as:
 
-> Hammami K & Ben Abdallah A (2024) pfa-eval-android-project: Scripts
-> to automate the assessment of Android projects submitted by students.
+> Hammami K & Ben Abdallah A (2024) pfa-eval-android-project:
+> Automatic Android Programming Assignment Grading in Github Classroom
 > URL: <https://github.com/Enet-Com-23/pfa-eval-android-project>.
