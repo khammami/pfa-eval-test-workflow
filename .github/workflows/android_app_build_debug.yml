@@ -22,8 +22,14 @@ jobs:
       # Check if the application folder contains an Android project
       - name: Check for Android project
         run: |
-          if [ -f "${{env.ANDROID_APP_PATH}}/build.gradle" ]; then
+          if [ -f "${{env.ANDROID_APP_PATH}}/build.gradle" ] || [ -f "${{env.ANDROID_APP_PATH}}/build.gradle.kts" ]; then
             echo "Android project found"
+            if [ -n "$(find ${{env.ANDROID_APP_PATH}}/app/src/main/java -name "*.kt" -type f)" ]; then
+              echo "Module app is written in Kotlin"
+              exit 1
+            else
+              echo "Module app is written in Java"
+            fi
           else
             echo "No Android project found"
             exit 1
@@ -42,7 +48,6 @@ jobs:
       # Build the debug apk
       - name: Build debug apk
         run: ./${{env.ANDROID_APP_PATH}}/gradlew assembleDebug -p ${{env.ANDROID_APP_PATH}}
-
       # Upload the debug apk to GitHub
       - name: Upload debug apk
         uses: actions/upload-artifact@v3
