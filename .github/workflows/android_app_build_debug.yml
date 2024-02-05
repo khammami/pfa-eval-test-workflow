@@ -76,6 +76,19 @@ jobs:
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
 
+      - name: Check GithubA env
+        run: echo "$GITHUB_CONTEXT"
+
+      - name: Start Android Emulator
+        timeout-minutes: 10
+        continue-on-error: true
+        run: |
+          echo "Starting emulator"
+          nohup $ANDROID_HOME/emulator/emulator -avd test -no-audio -no-snapshot -no-window &
+          $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
+          $ANDROID_HOME/platform-tools/adb devices
+          echo "Emulator started"
+
       - name: run tests
         run: ./${{env.ANDROID_APP_PATH}}/gradlew connectedCheck -p ${{env.ANDROID_APP_PATH}}
       
