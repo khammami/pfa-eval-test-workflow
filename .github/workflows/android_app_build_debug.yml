@@ -52,7 +52,7 @@ jobs:
         run: ./${{env.ANDROID_APP_PATH}}/gradlew assembleDebug -p ${{env.ANDROID_APP_PATH}}
       # Upload the debug apk to GitHub
       - name: Upload debug apk
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: android-debug
           path: "${{env.ANDROID_APP_PATH}}/app/build/outputs/apk/debug/*"
