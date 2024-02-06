@@ -80,14 +80,6 @@ jobs:
       - name: Check GithubA env
         run: echo "$GITHUB_CONTEXT"
 
-      - name: tests
-        run: |
-          if ! "$ANDROID_SDK_TOOLS_PATH"/avdmanager list avd | grep -q "Name: avd-test"; then
-            echo "Error: AVD named avd-test not found."
-            exit 1
-          fi
-          "$ANDROID_SDK_TOOLS_PATH"/emulator -avd "avd-test"
-
       - name: tests 2
         run: |
           chmod +x .github/workflows/scripts/setup_emulators.sh
