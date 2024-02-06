@@ -6,8 +6,7 @@ set -e
 # set -x
 # VARIABLES
 API_LEVEL=29
-#ANDROID_HOME_SDK="/usr/local/lib/android/sdk"
-ANDROID_HOME_SDK="/home/khammami/Android/Sdk"
+ANDROID_HOME_SDK="/usr/local/lib/android/sdk"
 
 # Check Emulator already Installed
 EMULATOR_COUNT=$($ANDROID_HOME_SDK/tools/emulator -list-avds | wc -l)
