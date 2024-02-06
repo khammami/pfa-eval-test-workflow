@@ -91,7 +91,7 @@ jobs:
           echo $ANDROID_HOME/cmdline-tools/latest
           ls -a $ANDROID_HOME/cmdline-tools/latest
           echo "########"
-          grep -rI "emulator" "$ANDROID_HOME" 2>/dev/null
+          find "$ANDROID_HOME" -path "*emulator*" -o -name "*emulator*" -print
 
       - name: tests 2
         run: |
@@ -100,7 +100,7 @@ jobs:
       - name: tests 3
         run: |
           echo "########"
-          grep -rI "emulator" "$ANDROID_HOME" 2>/dev/null
+          find "$ANDROID_HOME" -path "*emulator*" -o -name "*emulator*" -print
 
       # - name: Start Android Emulator
       #   timeout-minutes: 1
