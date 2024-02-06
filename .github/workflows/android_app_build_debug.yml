@@ -52,12 +52,12 @@ jobs:
 
       - name: AVD cache
         uses: actions/cache@v4
-        id: avd-cache
+        id: avd-cache-new
         with:
           path: |
             ~/.android/avd/*
             ~/.android/adb*
-          key: avd-eval-test
+          key: avd-eval-test-1
 
       - name: Grant gradlew permission
         run: chmod +x ${{env.ANDROID_APP_PATH}}/gradlew
@@ -67,11 +67,12 @@ jobs:
         run: ./${{env.ANDROID_APP_PATH}}/gradlew assembleDebug -p ${{env.ANDROID_APP_PATH}}
 
       - name: create AVD and generate snapshot for caching
-        if: steps.avd-cache.outputs.cache-hit != 'true'
+        if: steps.avd-cache-new.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
           avd-name: "test"
           api-level: 29
+          target: google_apis
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
