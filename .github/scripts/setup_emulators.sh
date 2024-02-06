@@ -22,7 +22,7 @@ else
     $TOOLS_PATH/bin/sdkmanager --install "system-images;android-${API_LEVEL};google_apis;x86"
     # #echo "no" | ${ANDROID_HOME_SDK}/tools/bin/avdmanager --verbose create avd --force --name "pixel" --device "pixel" --package "system-images;android-${API_LEVEL};google_apis;x86" --tag "google_apis" --abi "x86"
     $ANDROID_HOME_SDK/emulator/emulator @test -no-window -no-boot-anim -netdelay none -no-snapshot -wipe-data -verbose -show-kernel -no-audio -gpu swiftshader_indirect -no-snapshot &> /tmp/log.txt &
-    adb wait-for-device shell "while [[ -z $(getprop sys.boot_completed) ]]; do sleep 5; done; input keyevent 82"
+    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 5; done; input keyevent 82'
     adb shell settings put global window_animation_scale 0.0
     adb shell settings put global transition_animation_scale 0.0
     adb shell settings put global animator_duration_scale 0.0
