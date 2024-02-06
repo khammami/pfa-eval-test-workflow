@@ -91,8 +91,8 @@ jobs:
           echo $ANDROID_HOME/cmdline-tools/latest
           ls -a $ANDROID_HOME/cmdline-tools/latest
 
-      - name: tests 2
-        timeout-minutes: 1
+      - name: Setup & Start Emulator
+        timeout-minutes: 10
         run: |
           bash .github/scripts/setup_emulators.sh
 
@@ -111,8 +111,8 @@ jobs:
       #     $ANDROID_HOME/platform-tools/adb devices
       #     echo "Emulator started"
 
-      # - name: run tests
-      #   run: ./${{env.ANDROID_APP_PATH}}/gradlew connectedCheck -p ${{env.ANDROID_APP_PATH}}
+      - name: run tests
+        run: ./${{env.ANDROID_APP_PATH}}/gradlew connectedCheck -p ${{env.ANDROID_APP_PATH}}
       
       # - name: run tests
       #   uses: reactivecircus/android-emulator-runner@v2
