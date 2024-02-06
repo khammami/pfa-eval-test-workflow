@@ -100,7 +100,7 @@ jobs:
       - name: tests 3
         run: |
           echo "########"
-          find "$ANDROID_HOME" -path "*emulator*" -o -name "*emulator*" -print
+          find "$ANDROID_HOME" -name "*emulator*" -print
 
       # - name: Start Android Emulator
       #   timeout-minutes: 1
