@@ -70,7 +70,7 @@ jobs:
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          avd-name: "avd-test"
+          avd-name: "test"
           api-level: 29
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
@@ -91,15 +91,15 @@ jobs:
       #   run: |
       #     bash .github/scripts/setup_emulators.sh
 
-      # - name: Start Android Emulator
-      #   timeout-minutes: 1
-      #   continue-on-error: true
-      #   run: |
-      #     echo "Starting emulator"
-      #     nohup $ANDROID_HOME/emulator/emulator -avd "avd-test" -no-audio -no-snapshot -no-window &
-      #     $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
-      #     $ANDROID_HOME/platform-tools/adb devices
-      #     echo "Emulator started"
+      - name: Start Android Emulator
+        timeout-minutes: 1
+        continue-on-error: true
+        run: |
+          echo "Starting emulator"
+          nohup $ANDROID_HOME/cmdline-tools/latest/emulator/emulator -avd "test" -no-audio -no-snapshot -no-window &
+          $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
+          $ANDROID_HOME/platform-tools/adb devices
+          echo "Emulator started"
 
       # - name: run tests
       #   run: ./${{env.ANDROID_APP_PATH}}/gradlew connectedCheck -p ${{env.ANDROID_APP_PATH}}
