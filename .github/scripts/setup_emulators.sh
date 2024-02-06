@@ -7,17 +7,19 @@ set -e
 # VARIABLES
 API_LEVEL=29
 ANDROID_HOME_SDK="/usr/local/lib/android/sdk"
+CMD_PATH="/cmdline-tools/latest"
+TOOLS_PATH=$ANDROID_HOME_SDK$CMD_PATH
 
 # Check Emulator already Installed
-EMULATOR_COUNT=$($ANDROID_HOME_SDK/cmdline-tools/emulator -list-avds | wc -l)
+EMULATOR_COUNT=$("$TOOLS_PATH"/emulator -list-avds | wc -l)
 
 if [[ "$EMULATOR_COUNT" -gt 0 ]]; then 
     echo "Emulator already available"
 else
     # Install Emulator
-    $ANDROID_HOME_SDK/cmdline-tools/bin/sdkmanager --update
-    $ANDROID_HOME_SDK/cmdline-tools/bin/sdkmanager --install "emulator"
-    $ANDROID_HOME_SDK/cmdline-tools/bin/sdkmanager --install "system-images;android-${API_LEVEL};google_apis;x86"
+    $TOOLS_PATH/bin/sdkmanager --update
+    $TOOLS_PATH/cmdline-tools/bin/sdkmanager --install "emulator"
+    $TOOLS_PATH/cmdline-tools/bin/sdkmanager --install "system-images;android-${API_LEVEL};google_apis;x86"
     # #echo "no" | ${ANDROID_HOME_SDK}/tools/bin/avdmanager --verbose create avd --force --name "pixel" --device "pixel" --package "system-images;android-${API_LEVEL};google_apis;x86" --tag "google_apis" --abi "x86"
     # $ANDROID_HOME_SDK/emulator/emulator @avd-test -no-window -no-boot-anim -netdelay none -no-snapshot -wipe-data -verbose -show-kernel -no-audio -gpu swiftshader_indirect -no-snapshot &> /tmp/log.txt &
     # adb wait-for-device shell "while [[ -z $(getprop sys.boot_completed) ]]; do sleep 5; done; input keyevent 82"

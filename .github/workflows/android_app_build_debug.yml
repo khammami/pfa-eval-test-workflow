@@ -91,9 +91,9 @@ jobs:
           echo $ANDROID_HOME/cmdline-tools/latest
           ls -a $ANDROID_HOME/cmdline-tools/latest
 
-      # - name: tests 2
-      #   run: |
-      #     bash .github/scripts/setup_emulators.sh
+      - name: tests 2
+        run: |
+          bash .github/scripts/setup_emulators.sh
 
       # - name: Start Android Emulator
       #   timeout-minutes: 1
