@@ -83,6 +83,7 @@ jobs:
       - name: tests 1
         run: |
           echo $ANDROID_HOME
+          ls -a $ANDROID_HOME
 
       - name: tests 2
         run: |
