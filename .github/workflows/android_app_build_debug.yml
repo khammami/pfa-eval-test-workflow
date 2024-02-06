@@ -81,9 +81,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
 
       - name: tests 2
-        run: |
-          chmod +x .github/workflows/scripts/setup_emulators.sh
-          ./.github/workflows/scripts/setup_emulators.sh
+        run: sh .github/scripts/setup_emulators.sh
 
       - name: Start Android Emulator
         timeout-minutes: 1
