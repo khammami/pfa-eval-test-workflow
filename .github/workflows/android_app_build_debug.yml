@@ -90,10 +90,9 @@ jobs:
           echo "########"
           echo $ANDROID_HOME/cmdline-tools/latest
           ls -a $ANDROID_HOME/cmdline-tools/latest
-          echo "########"
-          find "$ANDROID_HOME" -path "*emulator*" -o -name "*emulator*" -print
 
       - name: tests 2
+        timeout-minutes: 1
         run: |
           bash .github/scripts/setup_emulators.sh
 
