@@ -92,7 +92,7 @@ jobs:
           ls -a $ANDROID_HOME/cmdline-tools/latest
           echo "########"
           echo .android
-          ls -a .android
+          ls -a ~/.android
 
       - name: Setup & Start Emulator
         timeout-minutes: 10
