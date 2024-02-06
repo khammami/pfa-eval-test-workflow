@@ -87,7 +87,7 @@ jobs:
       - name: tests 2
         run: |
           chmod +x .github/scripts/setup_emulators.sh
-          sh.github/scripts/setup_emulators.sh
+          sh .github/scripts/setup_emulators.sh
 
       - name: Start Android Emulator
         timeout-minutes: 1
