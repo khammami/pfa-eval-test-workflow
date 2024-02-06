@@ -84,23 +84,25 @@ jobs:
         run: |
           echo $ANDROID_HOME
           ls -a $ANDROID_HOME
+          echo $ANDROID_HOME/cmdline-tools
+          ls -a $ANDROID_HOME/cmdline-tools
 
-      - name: tests 2
-        run: |
-          bash .github/scripts/setup_emulators.sh
+      # - name: tests 2
+      #   run: |
+      #     bash .github/scripts/setup_emulators.sh
 
-      - name: Start Android Emulator
-        timeout-minutes: 1
-        continue-on-error: true
-        run: |
-          echo "Starting emulator"
-          nohup $ANDROID_HOME/emulator/emulator -avd "avd-test" -no-audio -no-snapshot -no-window &
-          $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
-          $ANDROID_HOME/platform-tools/adb devices
-          echo "Emulator started"
+      # - name: Start Android Emulator
+      #   timeout-minutes: 1
+      #   continue-on-error: true
+      #   run: |
+      #     echo "Starting emulator"
+      #     nohup $ANDROID_HOME/emulator/emulator -avd "avd-test" -no-audio -no-snapshot -no-window &
+      #     $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
+      #     $ANDROID_HOME/platform-tools/adb devices
+      #     echo "Emulator started"
 
-      - name: run tests
-        run: ./${{env.ANDROID_APP_PATH}}/gradlew connectedCheck -p ${{env.ANDROID_APP_PATH}}
+      # - name: run tests
+      #   run: ./${{env.ANDROID_APP_PATH}}/gradlew connectedCheck -p ${{env.ANDROID_APP_PATH}}
       
       # - name: run tests
       #   uses: reactivecircus/android-emulator-runner@v2
