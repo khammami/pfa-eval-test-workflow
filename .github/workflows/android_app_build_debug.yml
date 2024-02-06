@@ -80,8 +80,14 @@ jobs:
       - name: Check GithubA env
         run: echo "$GITHUB_CONTEXT"
 
+      - name: tests 1
+        run: |
+          echo $ANDROID_HOME
+
       - name: tests 2
-        run: sh .github/scripts/setup_emulators.sh
+        run: |
+          chmod +x .github/scripts/setup_emulators.sh
+          sh.github/scripts/setup_emulators.sh
 
       - name: Start Android Emulator
         timeout-minutes: 1
