@@ -90,10 +90,17 @@ jobs:
           echo "########"
           echo $ANDROID_HOME/cmdline-tools/latest
           ls -a $ANDROID_HOME/cmdline-tools/latest
+          echo "########"
+          grep -rI "emulator" "$ANDROID_HOME" 2>/dev/null
 
       - name: tests 2
         run: |
           bash .github/scripts/setup_emulators.sh
+
+      - name: tests 3
+        run: |
+          echo "########"
+          grep -rI "emulator" "$ANDROID_HOME" 2>/dev/null
 
       # - name: Start Android Emulator
       #   timeout-minutes: 1
