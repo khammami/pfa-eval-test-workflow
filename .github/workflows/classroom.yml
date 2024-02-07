@@ -105,5 +105,5 @@ jobs:
           echo "#!/bin/sh" > setenv.sh
           echo "export ANDROID_APP_PATH=\"$ANDROID_APP_PATH\"" >> setenv.sh
           chmod +x setenv.sh
-          
+
       - uses: education/autograding@v1
