@@ -96,7 +96,7 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
-          script: echo "Generated AVD snapshot for caching."
+          script: echo "Emulator tools ready"
 
       # Grant permission to gradlew for execution
       - name: Grant permission to gradlew
