@@ -9,6 +9,16 @@
         "comparison": "included",
         "timeout": 10,
         "points": 10
+      },
+      {
+        "name": "emulate 2nd test",
+        "setup": ". ./setenv.sh && bash .github/scripts/setup_emulators.sh",
+        "run": ". ./setenv.sh && ./$ANDROID_APP_PATH/gradlew app:connectedAndroidTest -p $ANDROID_APP_PATH",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 10
       }
     ]
   }

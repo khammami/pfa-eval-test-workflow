@@ -107,3 +107,7 @@ jobs:
           chmod +x setenv.sh
 
       - uses: education/autograding@v1
+
+      # Kills the running emulator on the default port
+      - name: Kill Emulator
+        run: $ANDROID_HOME/platform-tools/adb -s emulator-5554 emu kill
