@@ -66,16 +66,8 @@ jobs:
           path: |
             ~/.android/avd/*
             ~/.android/adb*
-          key: avd-eval-test-new
-
-      # Save/Restore emulator cache for faster boot
-      - name: AVD cache
-        uses: actions/cache@v4
-        id: emu-cache-new
-        with:
-          path: |
             $ANDROID_HOME/emulator/*
-          key: emu-eval-test-new
+          key: avd-eval-test-new
 
       # Create an AVD if it's not cached yet
       - name: Create AVD and generate snapshot for caching
