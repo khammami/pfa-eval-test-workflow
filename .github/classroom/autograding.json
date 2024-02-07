@@ -2,8 +2,8 @@
     "tests": [
       {
         "name": "All test",
-        "setup": ". ./setenv.sh",
-        "run": "sh .github/scripts/start_instrumented_tests.sh",
+        "setup": "",
+        "run": ". ./setenv.sh && sh .github/scripts/start_instrumented_tests.sh",
         "input": "",
         "output": "",
         "comparison": "included",
