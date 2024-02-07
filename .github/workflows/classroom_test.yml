@@ -52,11 +52,9 @@ jobs:
           echo $ANDROID_HOME/cmdline-tools/latest
           ls -a $ANDROID_HOME/cmdline-tools/latest
           echo "########"
-          echo .android
-          ls -a ~/.android
-          echo "########"
           echo $ANDROID_HOME/platform-tools
           ls -a $ANDROID_HOME/platform-tools
+          $ANDROID_HOME/platform-tools/adb devices
 
   # build:
   #   name: Autograding
