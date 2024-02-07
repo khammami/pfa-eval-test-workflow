@@ -2,7 +2,7 @@
     "tests": [
       {
         "name": "All test",
-        "setup": ". ./setenv.sh && sh .github/scripts/setup_emulators.sh",
+        "setup": ". ./setenv.sh && bash .github/scripts/setup_emulators.sh",
         "run": ". ./setenv.sh && ./$ANDROID_APP_PATH/gradlew app:connectedAndroidTest -p $ANDROID_APP_PATH",
         "input": "",
         "output": "",
