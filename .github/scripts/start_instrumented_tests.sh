@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if command -v printenv >/dev/null 2>&1; then
+  printenv
+fi
+
 test_target="$1"
 
 if [ -z "$test_target" ]; then
