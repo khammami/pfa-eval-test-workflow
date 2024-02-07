@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if command -v printenv >/dev/null 2>&1; then
+  printenv
+fi
+
 # fail if any commands fails
 set -e
 # debug log
