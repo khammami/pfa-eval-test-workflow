@@ -124,6 +124,11 @@ jobs:
       # Instrumented tests
       - name: Run tests
         run: ./${{env.ANDROID_APP_PATH}}/gradlew connectedCheck -p ${{env.ANDROID_APP_PATH}}
+
+      # Kills the running emulator on the default port
+      - name: Kill Emulator
+        run: $ANDROID_HOME/platform-tools/adb -s emulator-5554 emu kill
+        
       
       # - name: run tests
       #   uses: reactivecircus/android-emulator-runner@v2
