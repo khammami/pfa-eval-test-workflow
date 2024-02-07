@@ -18,8 +18,8 @@ start_emulator() {
     $ANDROID_HOME_SDK/platform-tools/adb shell settings put global animator_duration_scale 0.0
     $ANDROID_HOME_SDK/platform-tools/adb devices
     echo "Emulator started"
-    # # Add ANDROID_SDK_ROOT for child process
-    # #echo sdk.dir=${ANDROID_HOME_SDK} >> sample/application/local.properties
+    # Add ANDROID_SDK_ROOT for child process
+    echo sdk.dir=${ANDROID_HOME_SDK} >> "$ANDROID_APP_PATH"/local.properties
 }
 
 # Check Emulator already Installed
