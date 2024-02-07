@@ -3,7 +3,7 @@
       {
         "name": "All test",
         "setup": ". ./setenv.sh",
-        "run": "./$ANDROID_APP_PATH/gradlew app:connectedAndroidTest -p $ANDROID_APP_PATH",
+        "run": "sh .github/scripts/start_instrumented_tests.sh",
         "input": "",
         "output": "",
         "comparison": "included",
