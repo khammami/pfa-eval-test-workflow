@@ -90,6 +90,14 @@ jobs:
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
 
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          force-avd-creation: false
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: true
+          script: echo "Generated AVD snapshot for caching."
+
       # Grant permission to gradlew for execution
       - name: Grant permission to gradlew
         run: chmod +x ${{env.ANDROID_APP_PATH}}/gradlew
@@ -105,12 +113,12 @@ jobs:
           echo "export ANDROID_APP_PATH=\"$ANDROID_APP_PATH\"" >> setenv.sh
           chmod +x setenv.sh
 
-       # Setup/Start the emulator to launch instrumented tests
+        # Setup/Start the emulator to launch instrumented tests
       - name: Setup & Start Emulator
         timeout-minutes: 10
         run: |
           bash .github/scripts/setup_emulators.sh
-      
+
       - uses: education/autograding@v1
 
       # Kills the running emulator on the default port
