@@ -106,6 +106,12 @@ jobs:
           echo "export ANDROID_APP_PATH=\"$ANDROID_APP_PATH\"" >> setenv.sh
           chmod +x setenv.sh
 
+       # Setup/Start the emulator to launch instrumented tests
+      - name: Setup & Start Emulator
+        timeout-minutes: 10
+        run: |
+          bash .github/scripts/setup_emulators.sh
+      
       - uses: education/autograding@v1
 
       # Kills the running emulator on the default port

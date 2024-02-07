@@ -1,9 +1,5 @@
 #!/bin/bash
 
-if command -v printenv >/dev/null 2>&1; then
-  printenv
-fi
-
 # fail if any commands fails
 set -e
 # debug log
@@ -16,11 +12,11 @@ TOOLS_PATH=$ANDROID_HOME_SDK$CMD_PATH
 
 start_emulator() {
     $ANDROID_HOME_SDK/emulator/emulator -avd test -no-window -no-boot-anim -netdelay none -no-snapshot -wipe-data -verbose -show-kernel -no-audio -gpu swiftshader_indirect -no-snapshot &> /tmp/log.txt &
-    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done; input keyevent 82'
-    adb shell settings put global window_animation_scale 0.0
-    adb shell settings put global transition_animation_scale 0.0
-    adb shell settings put global animator_duration_scale 0.0
-    adb devices
+    $ANDROID_HOME_SDK/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done; input keyevent 82'
+    $ANDROID_HOME_SDK/platform-tools/adb shell settings put global window_animation_scale 0.0
+    $ANDROID_HOME_SDK/platform-tools/adb shell settings put global transition_animation_scale 0.0
+    $ANDROID_HOME_SDK/platform-tools/adb shell settings put global animator_duration_scale 0.0
+    $ANDROID_HOME_SDK/platform-tools/adb devices
     echo "Emulator started"
     # Add ANDROID_SDK_ROOT for child process
     echo sdk.dir=${ANDROID_HOME_SDK} >> "$ANDROID_APP_PATH"/local.properties
