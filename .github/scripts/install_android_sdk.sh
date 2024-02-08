@@ -7,7 +7,7 @@ cmdlineToolsPath="$ANDROID_HOME/cmdline-tools"
 BUILD_TOOLS="build-tools;34.0.0"
 PLATFORM_TOOLS="platform-tools"
 
-# /usr/bin/sh -c \"sudo chown $USER:$USER $ANDROID_HOME -R
+chown $USER:$USER $ANDROID_HOME -R
 
 #add paths for commandline-tools and platform-tools
 export PATH="$cmdlineToolsPath/latest:$cmdlineToolsPath/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
@@ -16,7 +16,7 @@ export PATH="$cmdlineToolsPath/latest:$cmdlineToolsPath/latest/bin:$ANDROID_HOME
 export ANDROID_AVD_HOME="$HOME/.android/avd"
 
 # accept all Android SDK licenses
-#/usr/bin/sh -c \\yes | sdkmanager --licenses >/dev/null
+echo "\yes" | sdkmanager --licenses
 
 sdkmanager --update
 
