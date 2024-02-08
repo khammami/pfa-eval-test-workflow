@@ -7,7 +7,7 @@ cmdlineToolsPath="$ANDROID_HOME/cmdline-tools"
 BUILD_TOOLS="build-tools;34.0.0"
 PLATFORM_TOOLS="platform-tools"
 
-chown $USER:$USER $ANDROID_HOME -R
+sudo chown $USER:$USER $ANDROID_HOME -R >/dev/null
 
 #add paths for commandline-tools and platform-tools
 export PATH="$cmdlineToolsPath/latest:$cmdlineToolsPath/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
