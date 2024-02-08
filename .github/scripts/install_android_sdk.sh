@@ -8,8 +8,8 @@ PLATFORM_TOOLS="platform-tools"
 SDKMANAGER_LIST_DELIM='/Available Packages/q'
 TEST_IMG_PCKG="system-images;android-${IMG_API_LEVEL};google_apis;x86"
 
-echo "Grant permission for Android Home Sdk..."
-sudo chown $USER:$USER $ANDROID_HOME -R >/dev/null
+# echo "Grant permission for Android Home Sdk..."
+# sudo chown $USER:$USER $ANDROID_HOME -R >/dev/null
 
 #add paths for commandline-tools and platform-tools
 export PATH="$cmdlineToolsPath/latest:$cmdlineToolsPath/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
@@ -17,12 +17,9 @@ export PATH="$cmdlineToolsPath/latest:$cmdlineToolsPath/latest/bin:$ANDROID_HOME
 # set standard AVD path
 export ANDROID_AVD_HOME="$HOME/.android/avd"
 
-# accept all Android SDK licenses
-echo "Accept all licenses..."
+# Accept licenses and update sdkmanager
+echo "Accepting licenses and updating sdkmanager..."
 yes | sdkmanager --licenses >/dev/null
-
-# Update sdkmanager packages to the latest version
-echo "Update installed packages in sdkmanager..."
 sdkmanager --update >/dev/null
 
 #sdkmanager --install "cmdline-tools;latest" >/dev/null

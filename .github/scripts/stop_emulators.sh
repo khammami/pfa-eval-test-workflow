@@ -5,16 +5,16 @@ devices=$("$ANDROID_HOME"/platform-tools/adb devices | grep emulator-)
 
 # Iterate over each device and kill it
 for device in $devices; do
-  # Extract the device ID
-  device_id="${device% device}"
+    # Extract the device ID
+    device_id="${device% device}"
 
-  # Kill the emulator
-  "$ANDROID_HOME"/platform-tools/adb -s "$device_id" emu kill
+    # Kill the emulator
+    "$ANDROID_HOME"/platform-tools/adb -s "$device_id" emu kill
 
-  # Wait for the emulator to be offline
-  while "$ANDROID_HOME"/platform-tools/adb -s "$device_id" get-state | grep -q device; do
-    sleep 1
-  done
+    # Wait for the emulator to be offline
+    while "$ANDROID_HOME"/platform-tools/adb -s "$device_id" get-state | grep -q device; do
+        sleep 1
+    done
 
-  echo "Emulator $device_id killed successfully."
+    echo "Emulator $device_id killed successfully."
 done
