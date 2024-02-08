@@ -17,7 +17,7 @@ export ANDROID_AVD_HOME="$HOME/.android/avd"
 
 # accept all Android SDK licenses
 echo "Accept all licenses..."
-yes | sdkmanager --licenses >/dev/null
+"y" | sdkmanager --licenses >/dev/null
 
 # Update sdkmanager packages to the latest version
 echo "Updates installed packages in sdkmanager..."
