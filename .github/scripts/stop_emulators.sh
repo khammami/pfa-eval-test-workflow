@@ -1,5 +1,5 @@
 #!/bin/bash
-ANDROID_HOME="/home/khammami/Android/Sdk"
+
 # List all connected devices
 devices=$("$ANDROID_HOME"/platform-tools/adb devices | grep emulator-)
 
