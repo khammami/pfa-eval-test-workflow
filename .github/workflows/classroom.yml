@@ -122,4 +122,6 @@ jobs:
 
       # Kills the running emulator on the default port
       - name: Kill Emulator
-        run: $ANDROID_HOME/platform-tools/adb -s emulator-5554 emu kill
+        run: |
+          chmod +x .github/scripts/stop_emulators.sh
+          ./.github/scripts/stop_emulators.sh
