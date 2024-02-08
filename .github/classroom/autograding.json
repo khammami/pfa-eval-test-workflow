@@ -1,0 +1,24 @@
+{
+    "tests": [
+      {
+        "name": "All test",
+        "setup": "",
+        "run": ". ./setenv.sh && ./$ANDROID_APP_PATH/gradlew app:connectedAndroidTest -p $ANDROID_APP_PATH",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 10
+      },
+      {
+        "name": "emulate 2nd test",
+        "setup": "",
+        "run": ". ./setenv.sh && ./$ANDROID_APP_PATH/gradlew app:connectedAndroidTest -p $ANDROID_APP_PATH",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 10
+      }
+    ]
+  }
