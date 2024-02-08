@@ -90,13 +90,11 @@ jobs:
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
 
-      - uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          force-avd-creation: false
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          disable-animations: true
-          script: echo "Emulator tools ready"
+      # Check Android Sdk packages
+      - name: Check Android Sdk
+        run: |
+          chmod +x .github/scripts/install_android_sdk.sh
+          ./.github/scripts/install_android_sdk.sh
 
       # Grant permission to gradlew for execution
       - name: Grant permission to gradlew
