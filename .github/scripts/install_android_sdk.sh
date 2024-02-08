@@ -40,7 +40,7 @@ fi
 # Check for emulator (more generic approach)
 if ! sdkmanager --list | sed -e '/Available Packages/q' | grep -q "emulator"; then
   echo "Emulator not found. Installing..."
-  /usr/bin/sh -c sdkmanager --install emulator --channel=0 >/dev/null
+  sdkmanager --install emulator --channel=0 >/dev/null
 else
   echo "Emulator already installed."
 fi
