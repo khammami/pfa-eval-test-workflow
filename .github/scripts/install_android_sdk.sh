@@ -16,7 +16,7 @@ export PATH="$cmdlineToolsPath/latest:$cmdlineToolsPath/latest/bin:$ANDROID_HOME
 export ANDROID_AVD_HOME="$HOME/.android/avd"
 
 # accept all Android SDK licenses
-/usr/bin/sh -c \\yes | sdkmanager --licenses >/dev/null
+#/usr/bin/sh -c \\yes | sdkmanager --licenses >/dev/null
 
 /usr/bin/sh -c  sdkmanager --update >/dev/null
 
