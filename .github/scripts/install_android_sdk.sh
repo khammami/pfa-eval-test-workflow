@@ -18,19 +18,19 @@ export ANDROID_AVD_HOME="$HOME/.android/avd"
 # accept all Android SDK licenses
 #/usr/bin/sh -c \\yes | sdkmanager --licenses >/dev/null
 
-/usr/bin/sh -c  sdkmanager --update >/dev/null
+# /usr/bin/sh -c  sdkmanager --update >/dev/null
 
-/usr/bin/sh -c  sdkmanager --install "cmdline-tools;latest" >/dev/null
+# /usr/bin/sh -c  sdkmanager --install "cmdline-tools;latest" >/dev/null
 
 # Check if packages are installed
-if ! sdkmanager --list | grep -q "$BUILD_TOOLS"; then
+if ! sdkmanager --list | sed -e '/Available Packages/q' | grep -q "$BUILD_TOOLS"; then
   echo "Build tools $BUILD_TOOLS not found. Installing..."
   /usr/bin/sh -c sdkmanager --install "$BUILD_TOOLS" >/dev/null
 else
   echo "Build tools $BUILD_TOOLS already installed."
 fi
 
-if ! sdkmanager --list | grep -q "$PLATFORM_TOOLS"; then
+if ! sdkmanager --list | sed -e '/Available Packages/q' | grep -q "$PLATFORM_TOOLS"; then
   echo "Platform tools not found. Installing..."
   /usr/bin/sh -c sdkmanager --install "$PLATFORM_TOOLS" >/dev/null
 else
@@ -38,7 +38,7 @@ else
 fi
 
 # Check for emulator (more generic approach)
-if ! sdkmanager --list | grep -q "emulator"; then
+if ! sdkmanager --list | sed -e '/Available Packages/q' | grep -q "emulator"; then
   echo "Emulator not found. Installing..."
   /usr/bin/sh -c sdkmanager --install emulator --channel=0 >/dev/null
 else
