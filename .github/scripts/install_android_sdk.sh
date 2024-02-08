@@ -6,6 +6,7 @@ cmdlineToolsPath="$ANDROID_HOME/cmdline-tools"
 BUILD_TOOLS="build-tools;34.0.0"
 PLATFORM_TOOLS="platform-tools"
 SDKMANAGER_LIST_DELIM='/Available Packages/q'
+TEST_IMG_PCKG="system-images;android-${IMG_API_LEVEL};google_apis;x86"
 
 echo "Grant permission for Android Home Sdk..."
 sudo chown $USER:$USER $ANDROID_HOME -R >/dev/null
@@ -44,12 +45,21 @@ else
 fi
 
 # Check for emulator (more generic approach)
-if ! sdkmanager --list | sed -e '/Available Packages/q' | grep -q "emulator"; then
+if ! sdkmanager --list | sed -e "$SDKMANAGER_LIST_DELIM" | grep -q "emulator"; then
   echo "Emulator not found. Installing..."
   sdkmanager --install emulator --channel=0 >/dev/null
   echo "Emulator has been installed successfully!"
 else
   echo "Emulator already installed."
+fi
+
+# Check for system image for the test
+if ! sdkmanager --list | sed -e "$SDKMANAGER_LIST_DELIM" | grep -q "$TEST_IMG_PCKG"; then
+  echo "System image not found. Installing..."
+  sdkmanager --install "$TEST_IMG_PCKG" >/dev/null
+  echo "System image has been installed successfully!"
+else
+  echo "System image already installed."
 fi
 
 echo "Done checking and installing packages."

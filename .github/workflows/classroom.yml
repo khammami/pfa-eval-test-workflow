@@ -14,6 +14,7 @@ concurrency:
 
 env:
   ANDROID_APP_PATH: "sample/application"
+  IMG_API_LEVEL: 29
 
 jobs:
   check-android-project:
