@@ -18,6 +18,8 @@ export ANDROID_AVD_HOME="$HOME/.android/avd"
 # accept all Android SDK licenses
 /usr/bin/sh -c \yes | sdkmanager --licenses >/dev/null
 
+/usr/bin/sh -c \sudo sdkmanager --update >/dev/null
+
 # Check if packages are installed
 if ! sdkmanager --list | grep -q "$BUILD_TOOLS"; then
   echo "Build tools $BUILD_TOOLS not found. Installing..."

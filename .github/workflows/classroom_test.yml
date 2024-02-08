@@ -20,8 +20,11 @@ jobs:
     name: test
     runs-on: ubuntu-latest
     steps:
-      # Check if the application folder contains an Android project
-      - name: Check for Android project
+      #Get the code
+      - uses: actions/checkout@v4
+
+      # Check sdk
+      - name: Install Android Sdk
         run: |
           chmod +x .github/scripts/install_android_sdk.sh
           ./.github/scripts/install_android_sdk.sh
