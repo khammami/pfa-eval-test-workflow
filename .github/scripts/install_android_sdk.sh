@@ -16,7 +16,7 @@ export PATH="$cmdlineToolsPath/latest:$cmdlineToolsPath/latest/bin:$ANDROID_HOME
 export ANDROID_AVD_HOME="$HOME/.android/avd"
 
 # accept all Android SDK licenses
-echo "\yes" | sdkmanager --licenses
+\yes | sdkmanager --licenses
 
 sdkmanager --update
 
@@ -26,6 +26,7 @@ sdkmanager --update
 if ! sdkmanager --list | sed -e '/Available Packages/q' | grep -q "$BUILD_TOOLS"; then
   echo "Build tools $BUILD_TOOLS not found. Installing..."
   sdkmanager --install "$BUILD_TOOLS" 
+  echo "$BUILD_TOOLS has been installed successfully!"
 else
   echo "Build tools $BUILD_TOOLS already installed."
 fi
@@ -33,6 +34,7 @@ fi
 if ! sdkmanager --list | sed -e '/Available Packages/q' | grep -q "$PLATFORM_TOOLS"; then
   echo "Platform tools not found. Installing..."
   sdkmanager --install "$PLATFORM_TOOLS" 
+  echo "Platform tools has been installed successfully!"
 else
   echo "Platform tools already installed."
 fi
@@ -41,6 +43,7 @@ fi
 if ! sdkmanager --list | sed -e '/Available Packages/q' | grep -q "emulator"; then
   echo "Emulator not found. Installing..."
   sdkmanager --install emulator --channel=0
+  echo "Emulator has been installed successfully!"
 else
   echo "Emulator already installed."
 fi
