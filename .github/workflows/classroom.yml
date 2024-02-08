@@ -84,7 +84,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           avd-name: "test"
-          api-level: 29
+          api-level: ${{env.IMG_API_LEVEL}}
           target: google_apis
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
