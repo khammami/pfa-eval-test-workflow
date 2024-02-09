@@ -45,6 +45,7 @@ function check_emulator() {
     else
         echo "Emulator '$AVD_NAME' not found. Installing..."
         install_emulator
+        start_emulator
     fi
 }
 
