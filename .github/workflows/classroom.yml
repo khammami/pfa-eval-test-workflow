@@ -104,7 +104,7 @@ jobs:
       # Setup/Start the emulator to launch instrumented tests
       - name: Setup & Start Emulator
         timeout-minutes: 10
-        run: bash .github/scripts/start_emulator.sh
+        run: bash .github/scripts/setup_emulators.sh
 
       # Create env that need to be injected to child process
       - name: Create file for setting env vars
