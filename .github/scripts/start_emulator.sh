@@ -27,6 +27,9 @@ function start_emulator() {
     # List connected devices
     "$ANDROID_SDK_HOME"/platform-tools/adb devices
 
+    # Add ANDROID_SDK_ROOT for child process (consider the use of setenv.sh)
+    echo sdk.dir="${ANDROID_HOME_SDK}" >>"$ANDROID_APP_PATH"/local.properties
+
     echo "Emulator '$AVD_NAME' started!"
 }
 
