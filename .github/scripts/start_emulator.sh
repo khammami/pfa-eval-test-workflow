@@ -4,7 +4,7 @@
 set -e # Exit script if any command fails
 
 # Define variables (use clear names)
-ANDROID_SDK_HOME="/usr/local/lib/android/sdk" # Adjust for your OS
+ANDROID_HOME_SDK="/usr/local/lib/android/sdk"
 AVD_NAME="test"
 PLATFORM_IMAGE="system-images;android-${IMG_API_LEVEL};google_apis;x86"
 
@@ -28,7 +28,7 @@ function start_emulator() {
     "$ANDROID_SDK_HOME"/platform-tools/adb devices
 
     # Add ANDROID_SDK_ROOT for child process (consider the use of setenv.sh)
-    echo sdk.dir="${ANDROID_HOME_SDK}" >>"$ANDROID_APP_PATH"/local.properties
+    echo sdk.dir=${ANDROID_HOME_SDK} >>"$ANDROID_APP_PATH"/local.properties
 
     echo "Emulator '$AVD_NAME' started!"
 }
