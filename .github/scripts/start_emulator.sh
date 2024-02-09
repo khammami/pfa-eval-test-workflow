@@ -69,4 +69,4 @@ check_emulator
 # echo "Mac:"
 # echo "  \$ANDROID_HOME: /Users/runner/Library/Android/sdk"
 
-exit 0 # Indicate successful execution
+#exit 0 # Indicate successful execution

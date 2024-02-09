@@ -19,7 +19,7 @@ export ANDROID_AVD_HOME="$HOME/.android/avd"
 
 # Accept licenses and update sdkmanager
 echo "Accepting licenses and updating sdkmanager..."
-bash -c "yes 'y' | sdkmanager --licenses"
+bash -c "yes 'y' | sdkmanager --licenses" >/dev/null
 sdkmanager --update >/dev/null
 
 #sdkmanager --install "cmdline-tools;latest" >/dev/null
