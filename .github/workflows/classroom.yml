@@ -101,6 +101,11 @@ jobs:
       - name: Grant permission to gradlew
         run: chmod +x ${{env.ANDROID_APP_PATH}}/gradlew
 
+      # Setup/Start the emulator to launch instrumented tests
+      - name: Setup & Start Emulator
+        timeout-minutes: 10
+        run: bash .github/scripts/start_emulator.sh
+
       # Create env that need to be injected to child process
       - name: Create file for setting env vars
         # https://github.com/education/autograding/issues/69#issuecomment-1497674655
@@ -110,14 +115,8 @@ jobs:
         run: |
           echo "#!/bin/sh" > setenv.sh
           echo "export ANDROID_APP_PATH=\"$ANDROID_APP_PATH\"" >> setenv.sh
+          echo "export ANDROID_HOME=\"$ANDROID_HOME\"" >> setenv.sh
           chmod +x setenv.sh
-
-        # Setup/Start the emulator to launch instrumented tests
-      - name: Setup & Start Emulator
-        timeout-minutes: 10
-        run: |
-          chmod +x .github/scripts/start_emulator.sh
-          ./.github/scripts/start_emulator.sh
 
       - uses: education/autograding@v1
 
