@@ -116,7 +116,8 @@ jobs:
       - name: Setup & Start Emulator
         timeout-minutes: 10
         run: |
-          bash .github/scripts/setup_emulators.sh
+          chmod +x .github/scripts/start_emulator.sh
+          ./.github/scripts/start_emulator.sh
 
       - uses: education/autograding@v1
 
