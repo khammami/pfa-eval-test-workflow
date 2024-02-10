@@ -4,8 +4,6 @@
 set -e # Exit script if any command fails
 
 # Define variables (use clear names)
-# ANDROID_SDK_HOME="/usr/local/lib/android/sdk"
-# AVD_NAME="test"
 PLATFORM_IMAGE="system-images;android-${IMG_API_LEVEL};google_apis;x86"
 
 # Helper functions
@@ -51,14 +49,14 @@ function check_emulator() {
 
 function install_emulator() {
     # Update SDK tools
-    "$ANDROID_SDK_HOME"/cmdline-tools/latest/bin/sdkmanager --update
+    sdkmanager --update
 
     # Install necessary components
-    "$ANDROID_SDK_HOME"/cmdline-tools/latest/bin/sdkmanager --install "emulator"
-    "$ANDROID_SDK_HOME"/cmdline-tools/latest/bin/sdkmanager --install "$PLATFORM_IMAGE"
+    sdkmanager --install "emulator"
+    sdkmanager --install "$PLATFORM_IMAGE"
 
     # List available AVDs for verification
-    "$ANDROID_SDK_HOME"/emulator/emulator -list-avds
+    emulator -list-avds
 }
 
 # Check or install emulator
