@@ -4,31 +4,31 @@
 set -e # Exit script if any command fails
 
 # Define variables (use clear names)
-ANDROID_SDK_HOME="/usr/local/lib/android/sdk"
-AVD_NAME="test"
+# ANDROID_SDK_HOME="/usr/local/lib/android/sdk"
+# AVD_NAME="test"
 PLATFORM_IMAGE="system-images;android-${IMG_API_LEVEL};google_apis;x86"
 
 # Helper functions
 function start_emulator() {
     # Start emulator in background, redirecting output to log
-    "$ANDROID_SDK_HOME"/emulator/emulator -avd "$AVD_NAME" \
+    emulator -avd "$AVD_NAME" \
         -no-snapshot-save -no-window -gpu swiftshader_indirect \
         -noaudio -no-boot-anim -camera-back none &>/tmp/log.txt &
 
     # Wait for boot completion and press home button
-    "$ANDROID_SDK_HOME"/platform-tools/adb wait-for-device shell \
+    adb wait-for-device shell \
         'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done; input keyevent 82'
 
     # Disable animations for faster tests
-    "$ANDROID_SDK_HOME"/platform-tools/adb shell settings put global window_animation_scale 0.0
-    "$ANDROID_SDK_HOME"/platform-tools/adb shell settings put global transition_animation_scale 0.0
-    "$ANDROID_SDK_HOME"/platform-tools/adb shell settings put global animator_duration_scale 0.0
+    adb shell settings put global window_animation_scale 0.0
+    adb shell settings put global transition_animation_scale 0.0
+    adb shell settings put global animator_duration_scale 0.0
 
     # List connected devices
-    "$ANDROID_SDK_HOME"/platform-tools/adb devices
+    adb devices
 
     # Add ANDROID_SDK_ROOT for child process (consider the use of setenv.sh)
-    echo sdk.dir=${ANDROID_SDK_HOME} >>"$ANDROID_APP_PATH"/local.properties
+    echo sdk.dir=${ANDROID_HOME} >>"$ANDROID_APP_PATH"/local.properties
 
     echo "Emulator '$AVD_NAME' started!"
 }
@@ -37,7 +37,7 @@ function check_emulator() {
     # Check if emulator already exists
     local count
 
-    count=$("$ANDROID_SDK_HOME"/emulator/emulator -list-avds | wc -l)
+    count=$(emulator -list-avds | wc -l)
 
     if [[ "$count" -gt 0 ]]; then
         echo "Emulator '$AVD_NAME' already available"

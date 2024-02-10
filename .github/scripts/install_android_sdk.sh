@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cmdlineToolsPath="$ANDROID_HOME/cmdline-tools"
+#cmdlineToolsPath="$ANDROID_HOME/cmdline-tools"
 
 # Define package names and versions
 BUILD_TOOLS="build-tools;34.0.0"
@@ -12,7 +12,8 @@ TEST_IMG_PCKG="system-images;android-${IMG_API_LEVEL};google_apis;x86"
 # sudo chown $USER:$USER $ANDROID_HOME -R >/dev/null
 
 #add paths for commandline-tools and platform-tools
-export PATH="$cmdlineToolsPath/latest:$cmdlineToolsPath/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
+#export PATH="$cmdlineToolsPath/latest:$cmdlineToolsPath/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
+bash .github/scripts/export_android_paths.sh
 
 # set standard AVD path
 export ANDROID_AVD_HOME="$HOME/.android/avd"
