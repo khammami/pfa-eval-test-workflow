@@ -13,10 +13,6 @@ TEST_IMG_PCKG="system-images;android-${IMG_API_LEVEL};google_apis;x86"
 
 #add paths for commandline-tools and platform-tools
 #export PATH="$cmdlineToolsPath/latest:$cmdlineToolsPath/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
-export PATH=$ANDROID_HOME/platform-tools:$PATH
-export PATH=$ANDROID_HOME/emulator:$PATH
-export PATH=$ANDROID_HOME/cmdline-tools/latest:$PATH
-export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
 
 # # set standard AVD path
 # export ANDROID_AVD_HOME="$HOME/.android/avd"
