@@ -13,10 +13,9 @@ TEST_IMG_PCKG="system-images;android-${IMG_API_LEVEL};google_apis;x86"
 
 #add paths for commandline-tools and platform-tools
 #export PATH="$cmdlineToolsPath/latest:$cmdlineToolsPath/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
-bash .github/scripts/export_android_paths.sh
 
-# set standard AVD path
-export ANDROID_AVD_HOME="$HOME/.android/avd"
+# # set standard AVD path
+# export ANDROID_AVD_HOME="$HOME/.android/avd"
 
 # Accept licenses and update sdkmanager
 echo "Accepting licenses and updating sdkmanager..."
