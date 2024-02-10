@@ -95,10 +95,6 @@ jobs:
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
 
-      # Export Android paths
-      - name: Export Android paths
-        run: ./.github/scripts/export_android_paths.sh
-
       # Check Android Sdk packages
       - name: Check Android Sdk
         run: ./.github/scripts/install_android_sdk.sh
