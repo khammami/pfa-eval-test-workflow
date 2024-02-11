@@ -29,6 +29,56 @@
         "comparison": "included",
         "timeout": 5,
         "points": 1
+      },
+      {
+        "name": "Question 1",
+        "setup": ". ./setenv.sh && ./decrypt_answers.sh",
+        "run": "./check_questions.sh 1",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 1,
+        "points": 1
+      },
+      {
+        "name": "Question 2",
+        "setup": ". ./setenv.sh && ./decrypt_answers.sh",
+        "run": "./check_questions.sh 2",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 1,
+        "points": 1
+      },
+      {
+        "name": "Question 3",
+        "setup": ". ./setenv.sh && ./decrypt_answers.sh",
+        "run": "./check_questions.sh 3",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 1,
+        "points": 1
+      },
+      {
+        "name": "Question 4",
+        "setup": ". ./setenv.sh && ./decrypt_answers.sh",
+        "run": "./check_questions.sh 4",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 1,
+        "points": 1
+      },
+      {
+        "name": "Question 5",
+        "setup": ". ./setenv.sh && ./decrypt_answers.sh",
+        "run": "./check_questions.sh 5",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 1,
+        "points": 1
       }
     ]
   }

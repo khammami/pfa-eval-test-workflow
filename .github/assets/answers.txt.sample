@@ -1,0 +1,5 @@
+La deuxième activité est ajoutée en tant que classe Java, le fichier de présentation (layout) XML est créé et le fichier `AndroidManifest.xml` est modifié pour déclarer une deuxième activité.
+Le bouton Up (Haut) de la barre d'applications n'apparaît plus dans la deuxième activité pour renvoyer l'utilisateur à l'activité parent.
+`new Intent(Context context, Class<?> class)`
+Comme extra d'intention (`Intent`)
+Tout ce qui précède.

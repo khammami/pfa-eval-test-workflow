@@ -31,3 +31,6 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+#README.md non crypted answers
+.github/assets/answers.txt
