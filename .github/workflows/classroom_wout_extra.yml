@@ -58,8 +58,10 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
-      - name: Grant permission for all scripts
-        run: find .github/scripts -type f -name "*.sh" -exec chmod +x {} \;
+      - name: Make all scripts executable
+        run: |
+          find .github/scripts -type f -name "*.sh" -exec chmod +x {} \;
+          chmod +x ${{env.ANDROID_APP_PATH}}/gradlew
 
       # Setup min version of Java required by Gradle v8
       - name: set up JDK 17
@@ -82,19 +84,6 @@ jobs:
             ~/.android/adb*
           key: avd-eval-test-new
 
-      # # Create an AVD if it's not cached yet
-      # - name: Create AVD and generate snapshot for caching
-      #   if: steps.avd-cache-new.outputs.cache-hit != 'true'
-      #   uses: reactivecircus/android-emulator-runner@v2
-      #   with:
-      #     avd-name: ${{env.AVD_NAME}}
-      #     api-level: ${{env.IMG_API_LEVEL}}
-      #     target: google_apis
-      #     force-avd-creation: false
-      #     emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-      #     disable-animations: false
-      #     script: echo "Generated AVD snapshot for caching."
-
       # Export Android paths
       - name: Export Android paths
         run: |
@@ -108,17 +97,13 @@ jobs:
       - name: Check Android Sdk
         run: ./.github/scripts/install_android_sdk.sh
 
-      # Check Android Sdk packages
+      # Create an AVD if it's not cached yet
       - name: Generate an AVD snapshot for caching
         if: steps.avd-cache-new.outputs.cache-hit != 'true'
         run: |
           ./.github/scripts/create_avd.sh
           ./.github/scripts/stop_emulators.sh
           echo "Generated AVD snapshot for caching."
-
-      # Grant permission to gradlew for execution
-      - name: Grant permission to gradlew
-        run: chmod +x ${{env.ANDROID_APP_PATH}}/gradlew
 
       # Setup/Start the emulator to launch instrumented tests
       - name: Setup & Start Emulator
