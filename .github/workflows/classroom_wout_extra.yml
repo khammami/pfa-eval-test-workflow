@@ -1,4 +1,4 @@
-name: GitHub Classroom Workflow
+name: GitHub Classroom Workflow wout reactivecircus
 
 on:
   - workflow_dispatch
@@ -84,19 +84,6 @@ jobs:
             ~/.android/adb*
           key: avd-eval-test-new
 
-      # Create an AVD if it's not cached yet
-      - name: Create AVD and generate snapshot for caching
-        if: steps.avd-cache-new.outputs.cache-hit != 'true'
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          avd-name: ${{env.AVD_NAME}}
-          api-level: ${{env.IMG_API_LEVEL}}
-          target: google_apis
-          force-avd-creation: false
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          disable-animations: false
-          script: echo "Generated AVD snapshot for caching."
-
       # Export Android paths
       - name: Export Android paths
         run: |
@@ -109,6 +96,14 @@ jobs:
       # Check Android Sdk packages
       - name: Check Android Sdk
         run: ./.github/scripts/install_android_sdk.sh
+
+      # Create an AVD if it's not cached yet
+      - name: Generate an AVD snapshot for caching
+        if: steps.avd-cache-new.outputs.cache-hit != 'true'
+        run: |
+          ./.github/scripts/create_avd.sh
+          ./.github/scripts/stop_emulators.sh
+          echo "Generated AVD snapshot for caching."
 
       # Setup/Start the emulator to launch instrumented tests
       - name: Setup & Start Emulator
