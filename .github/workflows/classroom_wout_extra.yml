@@ -14,6 +14,7 @@ concurrency:
 
 env:
   ANDROID_APP_PATH: "sample/application"
+  README_PATH: "sample"
   IMG_API_LEVEL: 29
   AVD_NAME: "test"
 
@@ -118,10 +119,12 @@ jobs:
       - name: Create file for setting env vars
         # https://github.com/education/autograding/issues/69#issuecomment-1497674655
         # https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#using-secrets-in-a-workflow
-        # env:
-        #   ANSWERS_SECRET_PASSPHRASE: ${{ secrets.ANSWERS_SECRET_PASSPHRASE }}
+        env:
+          ANSWERS_SECRET_PASSPHRASE: ${{ secrets.ANSWERS_SECRET_PASSPHRASE }}
         run: |
           echo "#!/bin/sh" > setenv.sh
+          echo "export ANSWERS_SECRET_PASSPHRASE=\"$ANSWERS_SECRET_PASSPHRASE\"" >> setenv.sh
+          echo "export README_PATH=\"$README_PATH\"" >> setenv.sh
           echo "export ANDROID_APP_PATH=\"$ANDROID_APP_PATH\"" >> setenv.sh
           echo "export ANDROID_HOME=\"$ANDROID_HOME\"" >> setenv.sh
           echo "export IMG_API_LEVEL=\"$IMG_API_LEVEL\"" >> setenv.sh

@@ -1,0 +1,5 @@
+Quelles modifications sont apportées lorsque vous ajoutez une deuxième activité à votre application en choisissant
+Que se passe-t-il si vous supprimez les éléments
+Quelle méthode de constructeur utilisez-vous pour créer
+comment ajoutez-vous la valeur actuelle du comptage
+comment afficher le nombre actuel dans la deuxième activité
