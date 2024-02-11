@@ -131,6 +131,13 @@ jobs:
           echo "export ANDROID_HOME=\"$ANDROID_HOME\"" >> setenv.sh
           echo "export IMG_API_LEVEL=\"$IMG_API_LEVEL\"" >> setenv.sh
           echo "export AVD_NAME=\"$AVD_NAME\"" >> setenv.sh
+          echo "export GRADLE_BUILD_ACTION_SETUP_COMPLETED=\"$GRADLE_BUILD_ACTION_SETUP_COMPLETED\"" >> setenv.sh
+          echo "export GRADLE_BUILD_ACTION_CACHE_RESTORED=\"$GRADLE_BUILD_ACTION_CACHE_RESTORED\"" >> setenv.sh
+          echo "export DEVELOCITY_INJECTION_ENABLED=\"$DEVELOCITY_INJECTION_ENABLED\"" >> setenv.sh
+          echo "export DEVELOCITY_PLUGIN_VERSION=\"$DEVELOCITY_PLUGIN_VERSION\"" >> setenv.sh
+          echo "export DEVELOCITY_CCUD_PLUGIN_VERSION=\"$DEVELOCITY_CCUD_PLUGIN_VERSION\"" >> setenv.sh
+          echo "export BUILD_SCAN_TERMS_OF_SERVICE_URL=\"$BUILD_SCAN_TERMS_OF_SERVICE_URL\"" >> setenv.sh
+          echo "export BUILD_SCAN_TERMS_OF_SERVICE_AGREE=\"$BUILD_SCAN_TERMS_OF_SERVICE_AGREE\"" >> setenv.sh
           chmod +x setenv.sh
 
       - uses: education/autograding@v1
