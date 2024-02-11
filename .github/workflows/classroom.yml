@@ -147,4 +147,5 @@ jobs:
 
       # Kills the running emulator on the default port
       - name: Kill Emulator
+        if: always()
         run: ./.github/scripts/stop_emulators.sh
