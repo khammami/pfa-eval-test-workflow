@@ -71,8 +71,12 @@ jobs:
           distribution: "temurin"
 
       # Let gradle action handle all cache reated to gradle operations
-      - name: Gradle cache
-        uses: gradle/gradle-build-action@v3
+      - name: Gradle setup/cache
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          build-scan-publish: true
+          build-scan-terms-of-service-url: "https://gradle.com/terms-of-service"
+          build-scan-terms-of-service-agree: "yes"
 
       # Save/Restore avd cache for faster boot
       - name: AVD cache
