@@ -1,21 +1,17 @@
 #!/bin/bash
 
 # Set options
-set -e # Exit script if any command fails
-
-# Define variables (use clear names)
-PLATFORM_IMAGE="system-images;android-${IMG_API_LEVEL};google_apis;x86"
+set -e          # Exit on error
 
 # Helper functions
 function start_emulator() {
-    # Start emulator in background, redirecting output to log
+    # Start avd
     emulator -avd "$AVD_NAME" \
         -no-snapshot-save -no-window -gpu swiftshader_indirect \
         -noaudio -no-boot-anim -camera-back none &>/tmp/log.txt &
 
     # Wait for boot completion and press home button
-    adb wait-for-device shell \
-        'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done; input keyevent 82'
+    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done; input keyevent 82'
 
     # Disable animations for faster tests
     adb shell settings put global window_animation_scale 0.0
@@ -25,41 +21,27 @@ function start_emulator() {
     # List connected devices
     adb devices
 
-    # Add ANDROID_SDK_ROOT for child process (consider the use of setenv.sh)
-    echo sdk.dir=${ANDROID_HOME} >>"$ANDROID_APP_PATH"/local.properties
+    # Add ANDROID_SDK_ROOT for child process (consider setenv.sh)
+    echo "sdk.dir=${ANDROID_HOME}" >>"$ANDROID_APP_PATH"/local.properties
 
     echo "Emulator '$AVD_NAME' started!"
 }
 
 function check_emulator() {
-    # Check if emulator already exists
-    local count
+    # Check if $AVD_NAME exists in list of available AVDs
+    local avds
+    avds=$(emulator -list-avds | grep -w "$AVD_NAME")
 
-    count=$(emulator -list-avds | wc -l)
-
-    if [[ "$count" -gt 0 ]]; then
+    if [[ -n "$avds" ]]; then
         echo "Emulator '$AVD_NAME' already available"
         start_emulator
     else
-        echo "Emulator '$AVD_NAME' not found. Installing..."
-        install_emulator
-        start_emulator
+        echo "Emulator '$AVD_NAME' not found."
+        Exit 0
     fi
 }
 
-function install_emulator() {
-    # Update SDK tools
-    sdkmanager --update
-
-    # Install necessary components
-    sdkmanager --install "emulator"
-    sdkmanager --install "$PLATFORM_IMAGE"
-
-    # List available AVDs for verification
-    emulator -list-avds
-}
-
-# Check or install emulator
+# Check and start emulator
 check_emulator
 
 # # Additional notes for users
