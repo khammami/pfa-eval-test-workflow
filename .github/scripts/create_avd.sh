@@ -15,7 +15,7 @@ EOF
 
 # Start emulator in background, redirecting output to log
 emulator -avd "$AVD_NAME" \
-    -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none &>/tmp/log.txt &
+    -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none &
 
 # Wait for boot completion and press home button
 adb wait-for-device shell \
